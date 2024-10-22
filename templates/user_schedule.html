@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}My Schedule{% endblock title %}
+
+{% block content %}
+<h1>My Schedule</h1>
+<p>Classes: {{ user.classes }}</p>
+<h2>Availability</h2>
+<ul>
+    <li>Monday: {{ user.monday_start|default_if_none:"N/A" }} - {{ user.monday_end|default_if_none:"N/A" }}</li>
+    <li>Tuesday: {{ user.tuesday_start|default_if_none:"N/A" }} - {{ user.tuesday_end|default_if_none:"N/A" }}</li>
+    <li>Wednesday: {{ user.wednesday_start|default_if_none:"N/A" }} - {{ user.wednesday_end|default_if_none:"N/A" }}</li>
+    <li>Thursday: {{ user.thursday_start|default_if_none:"N/A" }} - {{ user.thursday_end|default_if_none:"N/A" }}</li>
+    <li>Friday: {{ user.friday_start|default_if_none:"N/A" }} - {{ user.friday_end|default_if_none:"N/A" }}</li>
+</ul>
+{% endblock content %}

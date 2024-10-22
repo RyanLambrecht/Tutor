@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+{% if user.is_authenticated %}
+Hi {{ user.username }}!
+<a href="{% url 'user_schedule' %}">My Schedule</a>  <!-- Link to the new page -->
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">Log In</a> |
+<a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
+
+<h1>Tutors</h1>
+<ul>
+    {% for tutor in tutors %}
+        <li>{{ tutor.username }} - {{ tutor.subject }}</li>
+    {% empty %}
+        <li>No tutors available.</li>
+    {% endfor %}
+</ul>
+{% endblock content %}
